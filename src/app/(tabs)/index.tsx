@@ -20,27 +20,9 @@ const MyLightTheme = {
 
 export default function HomeScreen() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Pizza Chapo</Text>
-      <Text style={styles.price}>Ksh. 120</Text>
+    <View className='bg-white flex-1 pt-status items-center justify-center' style={{paddingTop:StatusBar.currentHeight}}>
+      <Text className='text-lg font-semibold my-2'>Pizza Chapo</Text>
+      <Text className='text-blue-700'>Ksh. 120</Text>
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: '#ffff',
-    flex: 1,
-    paddingTop: StatusBar.currentHeight,
-    alignItems: 'center',
-    justifyContent:'center'
-  },
-  title: {
-    fontSize: 18,
-    fontWeight: '600',
-    marginVertical:10
-  },
-  price: {
-    color:'blue',
-  }
-});
