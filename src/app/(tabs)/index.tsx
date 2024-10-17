@@ -7,7 +7,7 @@ export default function MenuScreen() {
     <View className=' bg-white flex-1' style={{ paddingTop: StatusBar.currentHeight }}>
       <StatusBar barStyle={'light-content'} backgroundColor={'purple'}/>
       <ScrollView>
-      <ProductListItem product={products[0]}/>
+      <ProductListItem product={products[5]}/>
         <ProductListItem product={products[1]} />
         </ScrollView>
    </View>
