@@ -13,13 +13,14 @@ export default function TabLayout() {
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
         headerShown: false,
+        
       }}>
       <Tabs.Screen name='index' options={{href:null}}/>
       <Tabs.Screen
         name="menu"
         options={{
           title: 'Menu',
-          headerShown: false,
+          headerShown: false,          
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon name={focused ? 'restaurant' : 'restaurant-outline'} color={'purple'} />
           ),
