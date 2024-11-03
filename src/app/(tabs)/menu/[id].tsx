@@ -1,15 +1,23 @@
-import { View, Text, Image } from 'react-native'
-import React from 'react'
+import { View, Text, Image, Pressable } from 'react-native'
+import React, { useState } from 'react'
 import { Stack, useLocalSearchParams } from 'expo-router'
 import products from '@/assets/data/products'
 import { defaultPizzaImage } from '@/src/components/ProductListItem'
+import Button from '@/src/components/Button'
+Button
 
 const sizes = ['S', 'M', 'L', 'XL']
 
 const ProductDetailsScreen = () => {
   const { id } = useLocalSearchParams()
 
+  const [selectedSize, setSelectedSize] = useState('M')
+
   const product = products.find((p) => p.id.toString() === id)
+
+  const addToCart = () => {
+    console.warn('Adding to cart, size:', selectedSize)
+  }
 
   if (!product) {
     return <Text>Product not found</Text>
@@ -33,15 +41,27 @@ const ProductDetailsScreen = () => {
       <Text>Select size</Text>
       <View className=" flex-row justify-around my-2">
         {sizes.map((size) => (
-          <View
+          <Pressable
+            onPress={() => {
+              setSelectedSize(size)
+            }}
             key={size}
-            className=" bg-gray-300 rounded-full aspect-square items-center justify-center w-10"
+            className={`${
+              selectedSize === size ? 'bg-gray-300' : 'bg-white'
+            } rounded-full aspect-square items-center justify-center w-10`}
           >
-            <Text className=" text-lg font-bold">{size}</Text>
-          </View>
+            <Text
+              className={`${
+                selectedSize === size ? 'text-black' : ' text-gray-400'
+              } text-lg`}
+            >
+              {size}
+            </Text>
+          </Pressable>
         ))}
       </View>
-      <Text className=" font-bold text-lg">${product.price}</Text>
+      <Text className=" font-bold text-lg mt-auto">${product.price}</Text>
+      <Button onPress={addToCart} text="Add to cart" />
     </View>
   )
 }
